@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 
 const ViewPost = () => {
@@ -10,6 +10,7 @@ const ViewPost = () => {
             }
         ).catch().finally()
     }
+    useEffect(()=>{fetchData()},[])
     return (
         <div>
             <NavBar />
