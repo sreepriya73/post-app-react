@@ -2,21 +2,14 @@ import React, { useState } from 'react'
 import NavBar from './NavBar'
 
 const ViewPost = () => {
-    const [data, setdata] = useState(
-        [
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-            { "postid":101, "title": "abc", "body": "zxc" },
-           
-        ]
-    )
+    const [data, setdata] = useState([])
+    const fetchData=()=>{
+        axios.get("https://jsonplaceholder.typicode.com/posts").then(
+            (response)=>{
+                setdata(response.data)
+            }
+        ).catch().finally()
+    }
     return (
         <div>
             <NavBar />
@@ -37,7 +30,7 @@ const ViewPost = () => {
                                 (value, index) => {
                                     return <tbody>
                                         <tr>
-                                            <td>{value.postid}</td>
+                                            <td>{value.id}</td>
                                             <td>{value.title}</td>
                                             <td>{value.body}</td>
 
